@@ -1,0 +1,31 @@
+﻿﻿<h1> Department Details </h1>
+
+<button class="btn btn-primary" onclick="getDept()"> Show Departments </button>
+<table class="table table-bordered table-striped"></table>
+
+
+<script>
+    function getDept()
+    {
+        var url = "https://localhost:7263/api/Departments";
+
+        fetch(url).then(dataType => dataType.json())
+            .then(productsResult => {
+
+                for (var i = 0; i < productsResult.length; i++) {
+                    $("table").append("<tr>" +
+                        "<td>" + productsResult[i].deptNo + "</td>" +
+                        "<td>" + productsResult[i].deptName+ "</td>" +
+                        "<td>" + productsResult[i].deptLocation+ "</td>" +
+                        "<td>" + productsResult[i].deptEmail + "</td>" +
+
+
+                    + "</tr>")
+                }
+
+            })
+
+
+
+    }
+</script>
